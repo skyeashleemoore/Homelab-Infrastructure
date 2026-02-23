@@ -34,6 +34,64 @@ Local network segmentation for internal services
 
 
 
+\## Architecture Overview
+
+
+
+\[Remote User]
+
+|
+
+(Encrypted WireGuard Tunnel)
+
+|
+
+\[Ubuntu Server (repurposed PC)]
+
+|
+
++------------------------------+
+
+| WireGuard VPN |
+
+| Docker Engine |
+
++------------------------------+
+
+|
+
++-------------------+--------------------+
+
+| | |
+
+\[Nextcloud] \[Collabora] \[osTicket]
+
+| |
+
+\[MariaDB: nextcloud-db] \[MariaDB: osticket-db]
+
+|
+
+\[Persistent Volumes on Host Storage]
+
+
+
+
+
+\*\*Notes\*\*
+
+\- WireGuard runs directly on the Ubuntu server to provide encrypted remote access.
+
+\- Application services are containerized using Docker.
+
+\- Each application has a dedicated MariaDB container for database isolation.
+
+\- Persistent volumes ensure data survives container restarts.
+
+\- The environment is designed to simulate small production-style infrastructure.
+
+
+
 \## Responsibilities
 
 \- Server installation and configuration
