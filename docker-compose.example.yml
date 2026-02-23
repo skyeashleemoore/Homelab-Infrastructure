@@ -8,12 +8,12 @@ services:
     image: mariadb:11
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: ${NC_DB_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${PASSWORD}
       MYSQL_DATABASE: nextcloud
       MYSQL_USER: nextcloud
-      MYSQL_PASSWORD: ${NC_DB_PASSWORD}
+      MYSQL_PASSWORD: ${PASSWORD}
     volumes:
-      - ./nextcloud/db:/var/lib/mysql
+      - path
 
   # --------------------
   # Nextcloud
@@ -27,9 +27,9 @@ services:
       MYSQL_HOST: nextcloud-db
       MYSQL_DATABASE: nextcloud
       MYSQL_USER: nextcloud
-      MYSQL_PASSWORD: ${NC_DB_PASSWORD}
+      MYSQL_PASSWORD: ${PASSWORD}
     volumes:
-      - ./nextcloud/html:/var/www/html
+      - path
     depends_on:
       - nextcloud-db
     extra_hosts:
@@ -43,10 +43,10 @@ services:
     ports:
       - "9980:9980"
     environment:
-      - extra_params=${COLLABORA_EXTRA_PARAMS}
-      - domain=${COLLABORA_DOMAIN}
-      - username=${COLLABORA_USER}
-      - password=${COLLABORA_PASS}
+      - extra_params=${PARAMS}
+      - domain=${DOMAIN}
+      - username=${USER}
+      - password=${PASS}
     cap_add:
       - MKNOD
       - SYS_ADMIN
@@ -63,12 +63,12 @@ services:
     image: mariadb:11
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: ${OST_DB_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${PASSWORD}
       MYSQL_DATABASE: osticket
       MYSQL_USER: osticket
-      MYSQL_PASSWORD: ${OST_DB_PASSWORD}
+      MYSQL_PASSWORD: ${PASSWORD}
     volumes:
-      - ./osticket/db:/var/lib/mysql
+      - path
 
   # ---------------------
   # osTicket
@@ -79,19 +79,19 @@ services:
     ports:
       - "8081:80"
     environment:
-      INSTALL_SECRET: ${OST_INSTALL_SECRET}
-      INSTALL_EMAIL: ${OST_INSTALL_EMAIL}
-      INSTALL_FIRSTNAME: ${OST_INSTALL_FIRSTNAME}
-      INSTALL_LASTNAME: ${OST_INSTALL_LASTNAME}
-      ADMIN_FIRSTNAME: ${OST_INSTALL_FIRSTNAME}
-      ADMIN_LASTNAME: ${OST_INSTALL_LASTNAME}
-      ADMIN_EMAIL: ${OST_ADMIN_EMAIL}
-      ADMIN_USER: ${OST_ADMIN_USER}
-      ADMIN_PASS: ${OST_ADMIN_PASS}
+      INSTALL_SECRET: ${SECRET}
+      INSTALL_EMAIL: ${EMAIL}
+      INSTALL_FIRSTNAME: ${FIRSTNAME}
+      INSTALL_LASTNAME: ${LASTNAME}
+      ADMIN_FIRSTNAME: ${FIRSTNAME}
+      ADMIN_LASTNAME: ${LASTNAME}
+      ADMIN_EMAIL: ${EMAIL}
+      ADMIN_USER: ${USER}
+      ADMIN_PASS: ${PASS}
       DB_HOST: osticket-db
       DB_NAME: osticket
       DB_USER: osticket
-      DB_PASS: ${OST_DB_PASSWORD}
+      DB_PASS: ${PASSWORD}
     depends_on:
       - osticket-db
  
