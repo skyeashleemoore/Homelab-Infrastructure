@@ -1,0 +1,13 @@
+# secrets
+*.key
+*.pem
+*.crt
+*.env
+.env
+secrets/
+private/
+wireguard/*.conf
+
+# OS junk
+.DS_Store
+Thumbs.db
