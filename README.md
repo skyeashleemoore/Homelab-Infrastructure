@@ -1,28 +1,28 @@
-\# Homelab Infrastructure
+# Homelab Infrastructure
 
 
 
-\## Overview
+## Overview
 
 This repository documents my personal homelab environment used to practice Linux system administration, containerization, networking, and secure remote access.
 
 
 
-\## Environment
+## Environment
 
-\- Ubuntu Server
+- Ubuntu Server
 
-\- Docker
+- Docker
 
-\- Nextcloud (containerized)
+- Nextcloud (containerized)
 
-\- OSTicket (containerized)
+- OSTicket (containerized)
 
-\- WireGuard VPN for secure remote access
+- WireGuard VPN for secure remote access
 
 
 
-\## Architecture
+## Architecture
 
 Old Windows 10 machine repurposed as Ubuntu server
 
@@ -34,11 +34,11 @@ Local network segmentation for internal services
 
 
 
-\## Architecture Overview
+## Architecture Overview
 
 
 
-\[Remote User]
+[Remote User]
 
 |
 
@@ -46,7 +46,7 @@ Local network segmentation for internal services
 
 |
 
-\[Ubuntu Server (repurposed PC)]
+[Ubuntu Server (repurposed PC)]
 
 |
 
@@ -64,15 +64,15 @@ Local network segmentation for internal services
 
 | | |
 
-\[Nextcloud] \[Collabora] \[osTicket]
+[Nextcloud] \[Collabora] \[osTicket]
 
 | |
 
-\[MariaDB: nextcloud-db] \[MariaDB: osticket-db]
+[MariaDB: nextcloud-db] \[MariaDB: osticket-db]
 
 |
 
-\[Persistent Volumes on Host Storage]
+[Persistent Volumes on Host Storage]
 
 
 
@@ -80,41 +80,41 @@ Local network segmentation for internal services
 
 \*\*Notes\*\*
 
-\- WireGuard runs directly on the Ubuntu server to provide encrypted remote access.
+- WireGuard runs directly on the Ubuntu server to provide encrypted remote access.
 
-\- Application services are containerized using Docker.
+- Application services are containerized using Docker.
 
-\- Each application has a dedicated MariaDB container for database isolation.
+- Each application has a dedicated MariaDB container for database isolation.
 
-\- Persistent volumes ensure data survives container restarts.
+- Persistent volumes ensure data survives container restarts.
 
-\- The environment is designed to simulate small production-style infrastructure.
-
-
-
-\## Responsibilities
-
-\- Server installation and configuration
-
-\- Container deployment and management
-
-\- VPN setup and key management
-
-\- System updates and patching
-
-\- Troubleshooting and log analysis
+- The environment is designed to simulate small production-style infrastructure.
 
 
 
-\## Goals
+## Responsibilities
+
+- Server installation and configuration
+
+- Container deployment and management
+
+- VPN setup and key management
+
+- System updates and patching
+
+- Troubleshooting and log analysis
+
+
+
+## Goals
 
 To simulate small production-like environments and strengthen skills in:
 
-\- Linux administration
+- Linux administration
 
-\- Networking fundamentals
+- Networking fundamentals
 
-\- Infrastructure reliability
+- Infrastructure reliability
 
 \- Secure remote access
 
